@@ -19,4 +19,4 @@ const NewsSchema = new Schema({
   followUpLink: { type: String },
 }, { timestamps: true });
 
-export default mongoose.model<INews>('News', NewsSchema); 
+export default mongoose.models?.News || mongoose.model<INews>('News', NewsSchema); 

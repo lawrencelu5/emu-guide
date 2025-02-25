@@ -8,6 +8,7 @@ import {
 } from "lucide-react";
 
 import type { Metadata } from "next";
+import { getCafes } from "@/actions/cafe.action";
 
 export const metadata: Metadata = {
   title: "Cafes",
@@ -272,6 +273,8 @@ const cafes: Cafe[] = [
 ];
 
 export default function page() {
+
+
   return (
     <div className="container mx-auto px-4 py-8">
       <Link
