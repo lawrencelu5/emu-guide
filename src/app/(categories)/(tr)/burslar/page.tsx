@@ -1,20 +1,12 @@
-import Link from "next/link";
-import { ArrowLeft, ExternalLink, GraduationCap } from "lucide-react";
-
 import type { Metadata } from "next";
+import CategoryPost from "@/components/ui/CategoryCard/CategoryPost";
+import ScholarshipsData from "../../(en)/scholarships/ScholarshipsData";
 
 export const metadata: Metadata = {
   title: "Burslar",
 };
 
-interface Scholarship {
-  id: number;
-  name: string;
-  explanation: string;
-  officialLink: string;
-}
-
-const scholarships: Scholarship[] = [
+/* const scholarships: Scholarship[] = [
   {
     id: 1,
     name: "Uluslararası Öğrenci Bursu",
@@ -87,42 +79,12 @@ const scholarships: Scholarship[] = [
     officialLink:
       "https://io.emu.edu.tr/en/students/prospective-students/scholarships",
   },
-];
+]; */
 
 export default function ScholarshipsPage() {
   return (
-    <div className="container mx-auto px-6 py-8">
-      <Link
-        href="/"
-        className="inline-flex items-center mb-6 text-blue-600 hover:text-blue-800"
-      >
-        <ArrowLeft className="w-5 h-5 mr-2" />
-        Ana Sayfaya Geri Dön
-      </Link>
-      <h1 className="text-3xl font-bold mb-8">DAÜ Bursları</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {scholarships.map((scholarship) => (
-          <div
-            key={scholarship.id}
-            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300"
-          >
-            <h2 className="text-xl font-semibold mb-4 flex items-center text-gray-900">
-              <GraduationCap className="w-5 h-5 mr-2" />
-              {scholarship.name}
-            </h2>
-            <p className="text-gray-600 mb-4">{scholarship.explanation}</p>
-            <a
-              href={scholarship.officialLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-blue-600 hover:underline flex items-center"
-            >
-              Resmi Sayfa
-              <ExternalLink className="w-4 h-4 ml-1" />
-            </a>
-          </div>
-        ))}
-      </div>
-    </div>
+    <CategoryPost title="DAÜ Bursları">
+      <ScholarshipsData lang="tr" />
+    </CategoryPost>
   );
 }

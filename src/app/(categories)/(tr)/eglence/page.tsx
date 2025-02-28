@@ -1,28 +1,12 @@
-import Link from "next/link";
-import {
-  ArrowLeft,
-  MapPin,
-  Banknote,
-  ExternalLink,
-  MessageSquare,
-} from "lucide-react";
-
 import type { Metadata } from "next";
+import CategoryPost from "@/components/ui/CategoryCard/CategoryPost";
+import EntertainmentData from "../../(en)/entertainment/EntertainmentData";
 
 export const metadata: Metadata = {
   title: "Eğlence",
 };
 
-interface Entertainment {
-  id: number;
-  name: string;
-  place: string;
-  googleMapsUrl: string;
-  priceRange: "$" | "$$" | "$$$";
-  comments: string[];
-}
-
-const entertainments: Entertainment[] = [
+/* const entertainments: Entertainment[] = [
   {
     id: 1,
     name: "BARCODE",
@@ -195,64 +179,12 @@ const entertainments: Entertainment[] = [
       "Güler yüzlü",
     ],
   },
-];
+]; */
 
 export default function EntertainmentPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Link
-        href="/"
-        className="inline-flex items-center mb-6 text-blue-600 hover:text-blue-800"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        Ana Sayfaya Dön
-      </Link>
-      <h1 className="text-3xl font-bold mb-6 text-gray-800">
-        DAÜ&apos;de Eğlence
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {entertainments.map((ent) => (
-          <div
-            key={ent.id}
-            className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6"
-          >
-            <h2 className="text-xl font-semibold mb-2 text-gray-700">
-              {ent.name}
-            </h2>
-            <div className="space-y-2">
-              <p className="flex items-center text-gray-600">
-                <MapPin className="w-4 h-4 mr-2 text-gray-500" />
-                <a
-                  href={ent.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline flex items-center text-blue-600"
-                >
-                  {ent.place}
-                  <ExternalLink className="w-3 h-3 ml-1" />
-                </a>
-              </p>
-              <p className="flex items-center text-green-600 font-semibold">
-                <Banknote className="w-4 h-4 mr-2" />
-                {ent.priceRange}
-              </p>
-              <div className="mt-4">
-                <h3 className="font-semibold flex items-center mb-2 text-gray-700">
-                  <MessageSquare className="w-4 h-4 mr-2 text-gray-500" />
-                  Yorumlar
-                </h3>
-                <ul className="list-disc list-inside space-y-1">
-                  {ent.comments.map((comment, index) => (
-                    <li key={index} className="text-sm text-gray-600">
-                      {comment}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <CategoryPost title="DAÜ'de Eğlence">
+      <EntertainmentData lang="tr" />
+    </CategoryPost>
   );
 }

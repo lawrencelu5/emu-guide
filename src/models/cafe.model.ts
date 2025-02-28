@@ -1,7 +1,14 @@
-import mongoose, { Schema } from 'mongoose';
-import { IBaseDocument, ITranslatedName, ITranslatedLocation } from './types/base.types';
+import mongoose, { Schema } from "mongoose";
+import {
+  IBaseDocument,
+  ITranslatedName,
+  ITranslatedLocation,
+} from "./types/base.types";
 
-export interface ICafe extends IBaseDocument, ITranslatedName, ITranslatedLocation {
+export interface ICafe
+  extends IBaseDocument,
+    ITranslatedName,
+    ITranslatedLocation {
   googleMapsUrl: string;
   openTime: string;
   closeTime: string;
@@ -11,18 +18,22 @@ export interface ICafe extends IBaseDocument, ITranslatedName, ITranslatedLocati
   trComments: string[];
 }
 
-const CafeSchema = new Schema({
-  name: { type: String, required: true },
-  trName: { type: String, required: true },
-  location: { type: String, required: true },
-  trLocation: { type: String, required: true },
-  googleMapsUrl: { type: String, required: true },
-  openTime: { type: String, required: true },
-  closeTime: { type: String, required: true },
-  studyScore: { type: Number, required: true, min: 0, max: 10 },
-  priceRange: { type: String, required: true },
-  comments: [{ type: String }],
-  trComments: [{ type: String }],
-}, { timestamps: true });
+const CafeSchema = new Schema(
+  {
+    name: { type: String, required: true },
+    trName: { type: String, required: true },
+    location: { type: String, required: true },
+    trLocation: { type: String, required: true },
+    googleMapsUrl: { type: String, required: true },
+    openTime: { type: String, required: true },
+    closeTime: { type: String, required: true },
+    studyScore: { type: Number, required: true, min: 0, max: 10 },
+    priceRange: { type: String, required: true },
+    comments: [{ type: String }],
+    trComments: [{ type: String }],
+  },
+  { timestamps: true }
+);
 
-export default mongoose.model<ICafe>('Cafe', CafeSchema); 
+export default mongoose.models?.Cafe ||
+  mongoose.model<ICafe>("Cafe", CafeSchema);

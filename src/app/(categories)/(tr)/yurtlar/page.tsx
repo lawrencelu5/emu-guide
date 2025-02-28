@@ -9,6 +9,8 @@ import {
 } from "lucide-react";
 
 import type { Metadata } from "next";
+import CategoryPost from "@/components/ui/CategoryCard/CategoryPost";
+import DormitoriesData from "../../(en)/dormitories/DormitoriesData";
 
 export const metadata: Metadata = {
   title: "Yurtlar",
@@ -25,7 +27,7 @@ export const metadata: Metadata = {
   comments: string[]
 } */
 
-const dormitories = [
+/* const dormitories = [
   {
     id: 1,
     name: "Alfam Student Dormitory",
@@ -163,88 +165,12 @@ const dormitories = [
     facilities: ["Gym", "Library", "Key Card System"],
     comments: ["Good location", "Well maintained"],
   },
-];
+]; */
 
 export default function page() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Link
-        href="/"
-        className="inline-flex items-center mb-6 text-blue-600 hover:text-blue-800"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        Ana Sayfaya Geri Dön
-      </Link>
-      <h1 className="text-3xl font-bold mb-6">DAÜ Yurtları</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {dormitories.map((dorm) => (
-          <div
-            key={dorm.id}
-            className="bg-white rounded-lg shadow-md p-6 transition-transform transform hover:scale-105"
-          >
-            <h2 className="text-2xl font-bold mb-3 text-gray-900">
-              {dorm.name}
-            </h2>
-            <div className="space-y-3">
-              <p className="flex items-center text-gray-700">
-                <MapPin className="w-4 h-4 mr-2" />
-                <a
-                  href={dorm.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline flex items-center"
-                >
-                  {dorm.place}
-                  <ExternalLink className="w-3 h-3 ml-1" />
-                </a>
-              </p>
-              <p
-                className={`flex items-center font-semibold ${
-                  dorm.priceRange === "$$$"
-                    ? "text-red-600"
-                    : dorm.priceRange === "$$"
-                    ? "text-yellow-600"
-                    : "text-green-600"
-                }`}
-              >
-                <Banknote className="w-4 h-4 mr-2" />
-                {dorm.priceRange}
-              </p>
-              <p className="flex items-center text-blue-600">
-                <Home className="w-4 h-4 mr-2" />
-                <a
-                  href={dorm.officialPageUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline flex items-center"
-                >
-                  Resmi Yurt Sayfası
-                  <ExternalLink className="w-3 h-3 ml-1" />
-                </a>
-              </p>
-              <div className="border-t pt-3">
-                <h3 className="font-semibold mb-1">Tesisler:</h3>
-                <ul className="list-disc list-inside space-y-1 text-sm text-gray-600">
-                  {dorm.facilities.map((facility, index) => (
-                    <li key={index}>{facility}</li>
-                  ))}
-                </ul>
-              </div>
-              <div className="mt-4 border-t pt-3 bg-gray-50 p-3 rounded-lg">
-                <h3 className="font-semibold flex items-center mb-2">
-                  <MessageSquare className="w-4 h-4 mr-2" />
-                  Yorumlar
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-sm text-gray-500">
-                  {dorm.comments.map((comment, index) => (
-                    <li key={index}>{comment}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <CategoryPost title="DAÜ Yurtları">
+      <DormitoriesData lang="tr" />
+    </CategoryPost>
   );
 }

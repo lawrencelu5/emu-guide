@@ -1,28 +1,12 @@
-import Link from "next/link";
-import {
-  ArrowLeft,
-  ExternalLink,
-  MapPin,
-  Tag,
-  Laptop,
-  Shirt,
-} from "lucide-react";
-
 import type { Metadata } from "next";
+import CategoryPost from "@/components/ui/CategoryCard/CategoryPost";
+import StoresData from "../../(en)/stores/StoresData";
 
 export const metadata: Metadata = {
   title: "Mağazalar",
 };
 
-interface Store {
-  id: number;
-  name: string;
-  type: string;
-  place: string;
-  googleMapsUrl: string;
-}
-
-const stores: Store[] = [
+/* const stores: Store[] = [
   {
     id: 1,
     name: "Durmazz Bilgisayar",
@@ -177,59 +161,12 @@ const stores: Store[] = [
     place: "Salamis Yolu",
     googleMapsUrl: "https://maps.app.goo.gl/exhpeKqUboDN9QPL6",
   },
-];
+]; */
 
 export default function StoresPage() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Link
-        href="/"
-        className="inline-flex items-center mb-6 text-blue-600 hover:text-blue-800 transition-colors duration-200"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        Ana Sayfaya Geri Dön
-      </Link>
-      <h1 className="text-4xl font-bold mb-8 text-gray-900">
-        Mağazaları Keşfet
-      </h1>
-
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {stores.map((store) => (
-          <div
-            key={store.id}
-            className="bg-white rounded-lg shadow-lg hover:shadow-2xl transition-shadow duration-300 p-6 border border-gray-200"
-          >
-            <h2 className="text-2xl font-semibold mb-4 flex items-center text-gray-800">
-              {store.type === "Teknoloji" && (
-                <Laptop className="w-6 h-6 mr-3 text-blue-500" />
-              )}
-              {store.type === "Giyim" && (
-                <Shirt className="w-6 h-6 mr-3 text-pink-500" />
-              )}
-              {store.type !== "Teknoloji" && store.type !== "Giyim" && (
-                <Tag className="w-6 h-6 mr-3 text-yellow-500" />
-              )}
-              {store.name}
-            </h2>
-            <p className="text-gray-600 mb-4">
-              İçerik:{" "}
-              <span className="font-medium text-gray-800">{store.type}</span>
-            </p>
-            <div className="flex items-center bg-gray-100 p-4 rounded-lg">
-              <MapPin className="w-5 h-5 mr-3 text-green-600" />
-              <a
-                href={store.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 hover:underline flex items-center"
-              >
-                {store.place}
-                <ExternalLink className="w-4 h-4 ml-2" />
-              </a>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <CategoryPost title="Mağazaları Keşfet">
+      <StoresData lang="tr" />
+    </CategoryPost>
   );
 }

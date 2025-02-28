@@ -3,7 +3,6 @@ import { useState } from "react";
 import Link from "next/link";
 import { Menu, Globe } from "lucide-react";
 import FeaturedAnnouncement from "@/components/FeaturedAnnouncement";
-import { cookies } from "next/headers";
 
 // Utility function to replace Turkish characters with English equivalents
 const replaceTurkishChars = (text: string) => {

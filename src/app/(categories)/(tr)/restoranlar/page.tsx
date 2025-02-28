@@ -1,30 +1,12 @@
-import Link from "next/link";
-import {
-  MapPin,
-  Clock,
-  Banknote,
-  ArrowLeft,
-  MessageSquare,
-} from "lucide-react";
-
 import type { Metadata } from "next";
+import CategoryPost from "@/components/ui/CategoryCard/CategoryPost";
+import RestaurantsData from "../../(en)/restaurants/RestaurantsData";
 
 export const metadata: Metadata = {
   title: "Restoranlar",
 };
 
-interface Cafe {
-  name: string;
-  location: string;
-  googleMapsUrl: string;
-  openTime: string;
-  closeTime: string;
-  studyScore: number;
-  priceRange: "$" | "$$" | "$$$";
-  comments: string[];
-}
-
-const cafes: Cafe[] = [
+/* const cafes: Cafe[] = [
   {
     name: "Ekor Vista",
     location: "Alfam Vista",
@@ -169,81 +151,12 @@ const cafes: Cafe[] = [
     priceRange: "$$",
     comments: ["İyi kalite", "Lezzetli", "Sessiz"],
   },
-];
+]; */
 
 export default function page() {
   return (
-    <div className="container mx-auto px-4 py-8">
-      <Link
-        href="/"
-        className="inline-flex items-center mb-6 text-blue-600 hover:text-blue-800 transition-colors duration-300"
-      >
-        <ArrowLeft className="w-4 h-4 mr-2" />
-        Ana Sayfaya Geri Dön
-      </Link>
-      <h1 className="text-4xl font-bold text-gray-900 mb-6">
-        DAÜ yakınlarındaki restoranlar
-      </h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {cafes.map((cafe, index) => (
-          <div
-            key={index}
-            className="bg-white rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 p-6 border border-gray-200"
-          >
-            <h2 className="text-2xl font-semibold text-gray-900 mb-2">
-              {cafe.name}
-            </h2>
-            <div className="space-y-2">
-              <p className="flex items-center">
-                <MapPin className="w-5 h-5 mr-2 text-gray-500" />
-                <a
-                  href={cafe.googleMapsUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="hover:underline text-blue-600"
-                >
-                  {cafe.location}
-                </a>
-              </p>
-              <p className="flex items-center">
-                <Clock className="w-5 h-5 mr-2 text-gray-500" />
-                {cafe.openTime} - {cafe.closeTime}
-              </p>
-              <p className="flex items-center">
-                <Banknote className="w-5 h-5 mr-2 text-gray-500" />
-                {cafe.priceRange}
-              </p>
-              <p className="flex items-center">
-                <span className="font-semibold mr-2">Study Score:</span>
-                <span
-                  className={`px-2 py-1 rounded ${
-                    cafe.studyScore >= 8
-                      ? "bg-green-100 text-green-800"
-                      : cafe.studyScore >= 5
-                      ? "bg-yellow-100 text-yellow-800"
-                      : "bg-red-100 text-red-800"
-                  }`}
-                >
-                  {cafe.studyScore}/10
-                </span>
-              </p>
-              <div className="mt-4">
-                <h3 className="font-semibold flex items-center mb-2">
-                  <MessageSquare className="w-5 h-5 mr-2 text-gray-500" />
-                  Comments
-                </h3>
-                <ul className="list-disc list-inside space-y-1 text-gray-600">
-                  {cafe.comments.map((comment, i) => (
-                    <li key={i} className="text-sm">
-                      {comment}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </div>
+    <CategoryPost title="DAÜ yakınlarındaki restoranlar">
+      <RestaurantsData lang="tr" />
+    </CategoryPost>
   );
 }
