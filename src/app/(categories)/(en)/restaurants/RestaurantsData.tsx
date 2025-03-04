@@ -14,7 +14,7 @@ interface Cafe {
   comments: string[];
 }
 
-const cafes: Cafe[] = [
+/* const cafes: Cafe[] = [
   {
     name: "Ekor Vista",
     location: "Alfam Vista",
@@ -159,7 +159,7 @@ const cafes: Cafe[] = [
     priceRange: "$$",
     comments: ["Good quality", "Tasty", "Quiet"],
   },
-];
+]; */
 
 export default async function RestaurantsData({
   lang,

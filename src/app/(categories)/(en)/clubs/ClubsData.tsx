@@ -458,66 +458,62 @@ export default async function ClubsData({ lang }: { lang?: "en" | "tr" }) {
   }
 
   return (
-    <>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-        {clubs.map((club) => (
-          <div
-            key={club.id}
-            className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out"
-          >
-            <h2 className="text-2xl font-bold mb-4 text-gray-800">
-              {club.name}
-            </h2>
-            <div className="space-y-4">
-              {club.memberSize && (
-                <p className="flex items-center text-gray-700">
-                  <Users className="w-5 h-5 mr-2" />
-                  {club.memberSize === "low" && <Users className="w-5 h-5" />}
-                  {club.memberSize === "mid" && (
-                    <>
-                      <Users className="w-5 h-5" />
-                      <Users className="w-5 h-5" />
-                    </>
-                  )}
-                  {club.memberSize === "high" && (
-                    <>
-                      <Users className="w-5 h-5" />
-                      <Users className="w-5 h-5" />
-                      <Users className="w-5 h-5" />
-                    </>
-                  )}
-                </p>
-              )}
-              {club.link && (
-                <p className="flex items-center text-blue-600">
-                  <ExternalLink className="w-5 h-5 mr-2" />
-                  <a
-                    href={club.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="hover:underline flex items-center"
-                  >
-                    Club Page
-                  </a>
-                </p>
-              )}
-              {club.activities.length > 0 && (
-                <div>
-                  <h3 className="font-semibold flex items-center mb-2">
-                    <Activity className="w-5 h-5 mr-2" />
-                    Activities
-                  </h3>
-                  <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
-                    {club.activities.map((activity, index) => (
-                      <li key={index}>{activity}</li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
+    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {clubs.map((club) => (
+        <div
+          key={club.id}
+          className="bg-white rounded-lg shadow-lg p-6 hover:shadow-xl transition-shadow duration-300 ease-in-out"
+        >
+          <h2 className="text-2xl font-bold mb-4 text-gray-800">{club.name}</h2>
+          <div className="space-y-4">
+            {club.memberSize && (
+              <p className="flex items-center text-gray-700">
+                <Users className="w-5 h-5 mr-2" />
+                {club.memberSize === "low" && <Users className="w-5 h-5" />}
+                {club.memberSize === "mid" && (
+                  <>
+                    <Users className="w-5 h-5" />
+                    <Users className="w-5 h-5" />
+                  </>
+                )}
+                {club.memberSize === "high" && (
+                  <>
+                    <Users className="w-5 h-5" />
+                    <Users className="w-5 h-5" />
+                    <Users className="w-5 h-5" />
+                  </>
+                )}
+              </p>
+            )}
+            {club.link && (
+              <p className="flex items-center text-blue-600">
+                <ExternalLink className="w-5 h-5 mr-2" />
+                <a
+                  href={club.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="hover:underline flex items-center"
+                >
+                  Club Page
+                </a>
+              </p>
+            )}
+            {club.activities.length > 0 && (
+              <div>
+                <h3 className="font-semibold flex items-center mb-2">
+                  <Activity className="w-5 h-5 mr-2" />
+                  Activities
+                </h3>
+                <ul className="list-disc list-inside space-y-2 text-sm text-gray-600">
+                  {club.activities.map((activity, index) => (
+                    <li key={index}>{activity}</li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-        ))}
-      </div>
-    </>
+        </div>
+      ))}
+    </div>
   );
 }

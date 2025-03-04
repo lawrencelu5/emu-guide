@@ -1,7 +1,8 @@
 import CategoryPost from "@/components/ui/CategoryCard/CategoryPost";
-import { AlertTriangle, Link } from "lucide-react";
+import { AlertTriangle } from "lucide-react";
 import type { Metadata } from "next";
 import HealthData from "./HealthData";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Health",

@@ -75,7 +75,6 @@ export default async function MarketsData({ lang }: { lang?: "en" | "tr" }) {
   if (!markets || !markets.length) {
     return <ErrorHeader lang={lang} />;
   }
-
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {markets.map((market) => (

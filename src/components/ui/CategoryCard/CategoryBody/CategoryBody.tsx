@@ -6,9 +6,5 @@ interface CardBody {
 }
 
 export default async function CategoryBody({ children }: CardBody) {
-  return (
-    <div className="space-y-8">
-      <Suspense fallback={<SkeletonLayout />}>{children}</Suspense>
-    </div>
-  );
+  return <Suspense fallback={<SkeletonLayout />}>{children}</Suspense>;
 }
